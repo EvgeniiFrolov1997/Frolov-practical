@@ -1,0 +1,14 @@
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\bin\Debug\net8.0-windows\CalculatorMVC.exe
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\bin\Debug\net8.0-windows\CalculatorMVC.deps.json
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\bin\Debug\net8.0-windows\CalculatorMVC.runtimeconfig.json
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\bin\Debug\net8.0-windows\CalculatorMVC.dll
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\bin\Debug\net8.0-windows\CalculatorMVC.pdb
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.AssemblyInfoInputs.cache
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.AssemblyInfo.cs
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.csproj.CoreCompileInputs.cache
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.dll
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\refint\CalculatorMVC.dll
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.pdb
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\CalculatorMVC.genruntimeconfig.cache
+C:\Users\Викторп\Downloads\Кугушев\CalculatorMVC\obj\Debug\net8.0-windows\ref\CalculatorMVC.dll
