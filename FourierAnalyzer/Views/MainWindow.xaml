@@ -1,0 +1,83 @@
+<Window x:Class="FourierAnalyzer.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        Title="Спектральный анализ звукового файла (преобразование Фурье) — Фролов Евгений, К-ИСП-21"
+        Height="720" Width="1180"
+        MinHeight="560" MinWidth="900"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel Margin="12">
+
+        <!-- Строка состояния -->
+        <StatusBar DockPanel.Dock="Bottom" Margin="0,10,0,0">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ProgressBar Width="160" Height="12" IsIndeterminate="True"
+                             Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibility}}"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- Выбор файла -->
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="Выберите файл:" Style="{StaticResource CaptionText}"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox Grid.Column="0"
+                         Text="{Binding FilePath, Mode=OneWay}"
+                         IsReadOnly="True"
+                         Height="26"
+                         VerticalContentAlignment="Center"
+                         Padding="4,0"/>
+
+                <Button Grid.Column="1"
+                        Content="..."
+                        Command="{Binding SelectFileCommand}"
+                        Width="48" Height="26" Margin="8,0,0,0"/>
+            </Grid>
+
+            <TextBlock Text="{Binding FileInfo}" Style="{StaticResource InfoText}"/>
+            <TextBlock Text="{Binding SpectrumInfo}" Style="{StaticResource InfoText}"/>
+        </StackPanel>
+
+        <!-- Сравнение алгоритмов -->
+        <Border DockPanel.Dock="Bottom" Margin="0,10,0,0" Padding="10"
+                BorderBrush="#FFD0D0D0" BorderThickness="1" Background="#FFFAFAFA">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Сравнить с собственным ДПФ"
+                            Command="{Binding CompareCommand}"
+                            Height="28" Padding="12,0"/>
+                    <TextBlock Text="Проверка формулы X[k] = SUM( x[n] * e^(-j*2*PI*k*n/N) )"
+                               VerticalAlignment="Center" Margin="12,0,0,0"
+                               FontSize="12" Foreground="#FF777777"/>
+                </StackPanel>
+                <TextBlock Text="{Binding ComparisonInfo}" Style="{StaticResource InfoText}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Графики -->
+        <Grid Margin="0,12,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <oxy:PlotView Grid.Row="0" Grid.Column="0" Model="{Binding AmplitudeModel}" Margin="0,0,6,6"/>
+            <oxy:PlotView Grid.Row="0" Grid.Column="1" Model="{Binding FrequencyModel}" Margin="6,0,0,6"/>
+            <oxy:PlotView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Model="{Binding SpectrumModel}" Margin="0,6,0,0"/>
+        </Grid>
+
+    </DockPanel>
+</Window>
