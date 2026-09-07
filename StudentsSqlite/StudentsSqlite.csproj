@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>StudentsSqlite</RootNamespace>
+    <AssemblyName>StudentsSqlite</AssemblyName>
+  </PropertyGroup>
+
+  <!-- Пакет устанавливается через менеджер NuGet:
+       Средства -> Диспетчер пакетов NuGet -> Управление пакетами решения
+       либо командой: Install-Package Microsoft.EntityFrameworkCore.Sqlite -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
+  </ItemGroup>
+
+</Project>

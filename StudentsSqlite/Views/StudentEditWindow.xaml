@@ -1,0 +1,77 @@
+<Window x:Class="StudentsSqlite.Views.StudentEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Title}"
+        Height="360" Width="440"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Opacity="0">
+
+    <!-- Плавное появление модального окна -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0" To="1" Duration="0:0:0.25"/>
+                    <ThicknessAnimation Storyboard.TargetProperty="Padding"
+                                        From="0,20,0,0" To="0,0,0,0" Duration="0:0:0.25"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" Command="{Binding CancelCommand}"/>
+    </Window.InputBindings>
+
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Поля ввода -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Имя:" Style="{StaticResource FieldLabel}"/>
+            <TextBox Style="{StaticResource FieldTextBox}"
+                     Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged,
+                                   ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+
+            <TextBlock Text="Фамилия:" Style="{StaticResource FieldLabel}"/>
+            <TextBox Style="{StaticResource FieldTextBox}"
+                     Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged,
+                                   ValidatesOnDataErrors=True, NotifyOnValidationError=True}"/>
+
+            <TextBlock Text="Отчество:" Style="{StaticResource FieldLabel}"/>
+            <TextBox Style="{StaticResource FieldTextBox}"
+                     Text="{Binding MiddleName, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="Возраст:" Style="{StaticResource FieldLabel}"/>
+            <TextBox Style="{StaticResource FieldTextBox}"
+                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged,
+                                   ValidatesOnDataErrors=True, ValidatesOnExceptions=True,
+                                   NotifyOnValidationError=True}"/>
+        </StackPanel>
+
+        <!-- Сообщение об ошибке проверки данных -->
+        <TextBlock Grid.Row="1"
+                   Text="{Binding Error}"
+                   Foreground="#FFD9534F"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,10"/>
+
+        <!-- Кнопки подтверждения -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="ОК"
+                    Command="{Binding OkCommand}"
+                    IsDefault="True"
+                    Width="100" Height="30" Margin="0,0,10,0"/>
+            <Button Content="Отмена"
+                    Command="{Binding CancelCommand}"
+                    Width="100" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window>
