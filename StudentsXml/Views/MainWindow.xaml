@@ -1,0 +1,74 @@
+<Window x:Class="StudentsXml.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учёт студентов (WPF, MVVM, XML) — Фролов Евгений, К-ИСП-21"
+        Height="520" Width="920"
+        MinHeight="380" MinWidth="700"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+
+        <!-- Строка состояния -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding StorageLocation}" Foreground="Gray"/>
+            </StatusBarItem>
+        </StatusBar>
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Таблица записей -->
+            <DataGrid Grid.Column="0"
+                      ItemsSource="{Binding Students}"
+                      SelectedItem="{Binding SelectedStudent}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="All"
+                      AlternatingRowBackground="#FFF6F8FA"
+                      RowHeight="26">
+
+                <DataGrid.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding EditCommand}"/>
+                </DataGrid.InputBindings>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" Width="*"/>
+                    <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Панель команд -->
+            <StackPanel Grid.Column="1" Width="140" Margin="10,0,0,0">
+                <Button Content="Добавить"
+                        Command="{Binding AddCommand}"
+                        Style="{StaticResource ActionButton}"/>
+                <Button Content="Изменить"
+                        Command="{Binding EditCommand}"
+                        Style="{StaticResource ActionButton}"/>
+                <Button Content="Удалить"
+                        Command="{Binding DeleteCommand}"
+                        Style="{StaticResource ActionButton}"/>
+
+                <TextBlock Margin="0,12,0,0"
+                           TextWrapping="Wrap"
+                           FontSize="11"
+                           Foreground="Gray"
+                           Text="Кнопки «Изменить» и «Удалить» доступны только при выделенной строке. Двойной щелчок по строке открывает редактирование."/>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>
